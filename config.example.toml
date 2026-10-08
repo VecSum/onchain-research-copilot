@@ -1,0 +1,59 @@
+# Copy to config.toml and edit. Every key here has a working default, so the
+# pipeline runs end to end with no edit at all (offline fixture mode).
+
+[run]
+# synthetic | fixtures | live
+data_mode = "fixtures"
+
+[providers]
+# "fixtures" runs fully offline. "geckoterminal" and "dexscreener" hit the free
+# public tier over plain HTTP. Order matters: first provider that answers wins.
+order = ["geckoterminal", "dexscreener"]
+cache_dir = "output/cache"
+cache_ttl_seconds = 900
+timeout_seconds = 12
+retries = 2
+user_agent = "onchain-research-copilot/0.1"
+
+[metrics]
+volatility_window = 24
+momentum_fast = 7
+momentum_slow = 21
+rsi_period = 14
+risk_free_rate = 0.0
+periods_per_year = 365
+
+[retrieval]
+corpus_dir = "data/corpus"
+index_dir = "output/index"
+chunk_chars = 460
+chunk_overlap = 60
+rrf_k = 60
+lexical_weight = 1.0
+semantic_weight = 1.0
+dim = 256
+top_k = 5
+rerank_enabled = true
+# A hit below this score is treated as "no evidence" and the report refuses.
+refusal_threshold = 0.11
+max_evidence_per_report = 6
+
+[llm]
+# deterministic -> template composer, no API key, no network, fully reproducible.
+# openai_compat -> any OpenAI-compatible Chat Completions endpoint.
+provider = "deterministic"
+base_url = "http://127.0.0.1:8080/v1"
+model = "qwen2.5-7b-instruct"
+api_key_env = "LLM_API_KEY"
+temperature = 0.1
+max_tokens = 1200
+timeout_seconds = 60
+# If the LLM call fails, fall back to the deterministic composer instead of
+# producing an empty report.
+fallback_to_deterministic = true
+
+[report]
+title = "On-chain Research Report"
+language = "en"
+include_evidence_quotes = true
+disclaimer = "Research artefact generated from configured data sources. Not investment advice."

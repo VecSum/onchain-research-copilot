@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.sqlite3
+*.sqlite
+output/
+reports/*.html
+.env
+!config.example.toml
+.DS_Store

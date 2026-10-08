@@ -1,0 +1,12 @@
+{"question": "how much liquidity does the pool have", "answerable": true, "expected_docs": ["liquidity-and-slippage"], "note": "direct definition of liquidity depth"}
+{"question": "what happens to slippage when liquidity is thin", "answerable": true, "expected_docs": ["liquidity-and-slippage"], "note": "slippage and thin depth"}
+{"question": "how is realised volatility calculated on hourly candles", "answerable": true, "expected_docs": ["volatility-and-drawdown"], "note": "volatility definition"}
+{"question": "what does a drawdown above forty percent mean for a pool", "answerable": true, "expected_docs": ["volatility-and-drawdown"], "note": "drawdown interpretation"}
+{"question": "can I compute signed net flow from a free data tier", "answerable": true, "expected_docs": ["netflow-and-wallets"], "note": "netflow proxy limits"}
+{"question": "why is volume per liquidity dollar used instead of netflow", "answerable": true, "expected_docs": ["netflow-and-wallets"], "note": "proxy rationale"}
+{"question": "how do I know whether a RAG answer is trustworthy", "answerable": true, "expected_docs": ["evaluating-rag"], "note": "evaluation methodology"}
+{"question": "what belongs in a research report disclosure section", "answerable": true, "expected_docs": ["reporting-practice"], "note": "reporting practice"}
+{"question": "who won the bridge tournament last night", "answerable": false, "expected_docs": [], "note": "unrelated to any corpus doc"}
+{"question": "what is the recipe for sourdough bread", "answerable": false, "expected_docs": [], "note": "off domain"}
+{"question": "zzzz qqqq wwww", "answerable": false, "expected_docs": [], "note": "gibberish tokens"}
+{"question": "what is the capital of France", "answerable": false, "expected_docs": [], "note": "general knowledge, deliberately not in corpus"}

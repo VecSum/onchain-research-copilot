@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onchain-research-copilot"
+version = "0.1.0"
+description = "Config-driven on-chain research copilot: market/chain data -> reproducible metrics -> cited RAG evidence -> structured report. Runs offline with zero third-party dependencies."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Hanping Lin" }]
+keywords = ["onchain", "defi", "rag", "llm", "research", "quant"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Office/Business :: Financial",
+]
+
+# No runtime dependencies on purpose: the whole pipeline is Python standard library
+# only (tomllib, sqlite3, urllib, dataclasses). Anything heavier is optional.
+dependencies = []
+
+[project.optional-dependencies]
+dev = []
+
+[project.scripts]
+onchain-copilot = "onchain_copilot.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["onchain_copilot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
